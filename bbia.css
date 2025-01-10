@@ -1,0 +1,731 @@
+@charset "utf-8";
+@font-face {
+    font-family: 'SpoqaHanSansNeo-Thin';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Thin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SpoqaHanSansNeo-Medium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SpoqaHanSansNeo-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Light';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+.amethysta-regular {
+    font-family: "Amethysta", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.abril-fatface-regular {
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.banner {
+    background-color: #f27d7d;
+    width: 100%;
+    height: 40px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.banner > ul {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.banner > ul li {}
+
+
+/* header */
+.header {
+    width: 100%;
+    height: 140px;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    z-index: 100;
+}
+.header .inner {
+    max-width: 1800px;
+    width: calc(100% - 60px);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.header .inner .pc_nav .gnb {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15%;
+}
+.header .inner .pc_nav .gnb li {
+    display: block;
+    padding: 0 20px;
+    color: #fff;
+}
+.header .inner .util {
+    display: flex;
+    gap: 20px;
+}
+.header .inner .util button {
+    border: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header .inner .util button img {
+    width: 40px;
+}
+
+
+/* main_visual */
+.swiper .mobile_visual {
+    display: none;
+}
+.main_visual {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+.main_visual .swiper {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    position: relative;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+.swiper-slide .text {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    z-index: 2;
+    display: block;
+}
+.swiper-slide .text .inner {
+    display: block; /* 기본적으로 block으로 설정하여 텍스트가 세로로 나열되도록 */
+}
+.swiper-slide .text .inner strong {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.swiper-slide .text .inner h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.swiper-slide .text .inner p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+
+/* .new */
+  .new {
+    margin-top: 80px;
+    text-align: center;
+    position: relative;
+  }
+  .new .swiper-container::before {
+}
+  .new h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+    font-family: "Abril Fatface", serif;
+  }
+  .new .category {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    position: relative;
+  }
+  .new .category .button {
+    border: none;
+    background-color: transparent;
+    gap: 80px;
+    font-family: 'SpoqaHanSansNeo-Regular';
+    font-size: 20px;
+  }
+  .new .category .button.active {
+    font-weight: bold;
+    font-family: 'SpoqaHanSansNeo-Medium';
+    font-size: 20px;
+  }
+  .category::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: url(../img/new.png);
+    z-index: -1;
+  }
+  .new .swiper-container {
+    /* width: 100%;
+    height: 100%; */
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .new .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .new .slide-item {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .new .slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .new .slide-item p {
+    color: #333;
+  }
+  .new .item-info {
+    position: absolute;
+  }
+  .new .swiper-button-next,
+  .new .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.new .swiper-button-next::after ,.new .swiper-button-prev::after {
+    display: none;
+}
+.new .swiper-button-next {
+    right: -80px;
+    background: url(../img/다음.svg) no-repeat;
+}
+.new .swiper-button-prev {
+    left: -80px;
+    background: url(../img/이전.svg) no-repeat;
+}
+/* .hot_picks */
+.hot_picks {
+    text-align: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 140px 20px;
+}
+.hot_picks h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: "Abril Fatface", serif;
+}
+.hot_picks .text {
+    text-align: center;
+    align-items: center;
+}
+
+.hot_picks .text p {
+    padding-bottom: 60px;
+}
+.hot_picks .text span {
+    border: 1px solid #333;
+    color: #fff;
+    padding: 15px 15px;
+    border-radius: 10px;
+    background-color: #333;
+}
+.hot_picks .hot_wrap {
+    margin-top: 190px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    height: 650px;
+}
+.hot_picks .item {
+    width: 30%; /* 적용하면 가운데 이미지 축소됨 */
+    position: relative;
+    margin-top: 100px;
+    z-index: 1; 
+}
+.hot_picks .item.left {
+    z-index: 0;
+    left: 13%;
+    top: -120px;
+}
+
+.hot_picks .item.center {
+    z-index: 2;
+}
+.hot_picks .item.right {
+    z-index: 0;
+    transform: scale(0.6);
+    bottom: 160px;
+    right: 15%;
+}
+
+.item.right img {
+    width: 200px;
+}
+
+.hot_picks .item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.hot_emphasis p {
+    margin-top: 50px;
+    font-size:150px;
+    color: #171C8F;
+    font-family: "Abril Fatface", serif;
+}
+.hot_images {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 20px;
+}
+.hot_images .item {
+    width: 48%;
+    overflow: hidden; 
+}
+.hot_images .item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+
+
+/* .brand */
+.brand {
+    background: url(../img/Brand.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover; /* 배경 이미지가 요소 크기에 맞게 커짐 */
+    height: 80vh; /* 예시: 화면의 80% 높이를 차지하게 설정 */
+    position: relative;
+  }
+  .brand::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* 반투명 검은색 오버레이 */
+    z-index: 1; /* 이미지 위에 오버레이가 표시되도록 설정 */
+}
+  .brand .inner {
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    justify-content: flex-start; /* 왼쪽으로 배치 */
+    align-items: center;
+    margin: 0;
+  }
+  
+  /* 텍스트 영역 스타일 */
+  .brand .text {
+    flex: 1; 
+    /* max-width: 500px; */
+    margin-left: 100px; 
+    text-align: left;
+    z-index: 3;
+  }
+  
+  .brand .text h2 {
+    font-size: 50px;
+    line-height: 1.4;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .brand .text p {
+    margin: 20px 0;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
+  }
+  
+  .brand .text span {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  /* Swiper 슬라이더 영역 스타일 */
+  .brand .swiper-container {
+    flex: 2; /* 슬라이더 영역이 텍스트보다 더 큰 비율 */
+    /* max-width: 700px; */
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    margin-right: 0; /* 오른쪽 여백 제거 */
+    padding-right: 0;
+  }
+  .brand .swiper-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+  .brand .swiper-slide {
+    width: 100%; /* 각 슬라이드가 화면의 절반을 차지하도록 설정 */
+    flex: 0 0 auto;
+  }
+  
+  .brand .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 최대 크기 제한 */
+  }
+
+
+/* .sns */
+.sns {
+    padding: 60px 300px;
+    background: linear-gradient(to left, #F4DADD 30%, transparent 30%);
+    height: 1000px;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 30px; 
+}
+.sns .inner {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 30px; 
+}
+.instagram_1 .item video {
+    width: 70%;
+}
+.sns .text a {
+    font-size: 18px;
+    text-align: center; 
+    margin: 10px 0; 
+    position: relative; 
+    z-index: 2; 
+}
+.sns .follow {
+    color: #939393;
+    font-family: 'Pretendard-Regular';
+    font-size: 20px;
+
+}
+.sns .instagram{
+    color: #000;
+    font-family: 'SpoqaHanSansNeo-Bold';
+    font-size: 20px;
+}
+.instagram_2 .item video {
+    width: 80%;
+}
+.instagram_2 {
+    margin-top: 80px;
+}
+/* .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: row; 
+    gap: 80px; 
+}
+.instagram_1 {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    justify-content: flex-start; 
+    position: relative;
+}
+
+.instagram_1 .item {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+.instagram_1 .text {
+    margin-top: auto; 
+    text-align: right;
+    color:#333 ;
+}
+.instagram_1, .instagram_2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.instagram_1 .item, .instagram_2 .item {
+    margin-bottom: 20px;
+}
+.instagram_1 .item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.instagram_1 video, .instagram_2 video {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.instagram_2 {
+    position: relative;
+    top: 200px; 
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.instagram_2 .text {
+    position: static;
+    text-align: left;
+    margin-bottom: 10px;
+    width: 100%;
+    color: #333;
+}
+.instagram_2 .item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.sns_icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 5px;
+}
+
+.sns_icon li {
+    list-style: none;
+}
+
+.sns_icon img {
+    width: 40px;
+    height: 40px;
+} */
+
+
+/* .footer */
+.footer {
+    background-color: #191919;
+    /* padding: 5rem 2rem 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 600px;
+    width: 100%;
+
+    /* justify-content: space-between; 
+    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    min-height: 600px;
+    flex-direction: column; */
+}
+.ft_wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem 2rem 0;
+}
+.l_wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    font-size: 14px;
+
+    /* align-items: flex-start; */
+
+    /* width: 70%;
+    margin-top: -2rem;
+    font-size: 14px; */
+}
+.r_wrap {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    width: 20%;
+    margin-top: 50px;
+
+}
+.f_inner {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    gap: 30px;
+    padding: 50px;
+}
+
+.logo {
+    flex: 0 0 auto; 
+    margin-right: 50px; 
+}
+.info {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+.info .name {
+    color: #fff;
+    font-family: 'Pretendard-Bold';
+    font-size: 14px;
+}
+.info_box {
+    display: flex;
+    gap: 200px;
+    margin-bottom: 50px;
+}
+dl {
+    display: flex; 
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 13px;
+}
+
+dt {
+    font-family: 'Pretendard-Light';
+    color: #fff;
+}
+
+dd {
+    margin: 0;
+    font-family: 'Pretendard-Medium';
+    color: #666666;
+}
+.link_box {
+    display: flex;
+    gap: 20px;
+}
+.copy {
+    color: #666666;
+}
+
+.cs_box {
+    display: flex;
+    flex-direction: column;
+}
+.cs_box .tit , a{
+    color: #fff;
+    font-size: 13px;
+    font-family: 'Pretendard-Regular';
+}
+.cs_cont {
+    color: #666666;
+    font-size: 13px;
+    font-family: 'Pretendard-Regular';
+    margin-top: 10px;
+}
+.f_title {
+    margin-top: auto;
+    width: 100%;
+}
+.f_title .f_text {
+    color: #292828;
+    font-size: 210px;
+    font-family: "Amethysta", serif;
+    text-align: center;
+}

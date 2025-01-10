@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBIA 리뉴얼</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Asul:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bbia.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var swiper = new Swiper(".main_visual .mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                    tiye : "fraction",
+                },
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+            });
+
+            var swiper = new Swiper('.new .swiper-container', {
+                slidesPerView: 3, // 한 화면에 3개의 슬라이드를 표시
+                spaceBetween: 30, // 슬라이드 간의 간격 설정
+                loop: true, // 슬라이드를 무한 반복
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 3000, // 3초마다 자동으로 슬라이드 변경
+                    disableOnInteraction: false, // 사용자 인터랙션 후에도 자동 재생 유지
+                },
+            });
+
+            var swiper = new Swiper('.brand .swiper-container', {
+                slidesPerView: 2.5,  // 한 번에 2개의 슬라이드가 보이도록 설정
+                spaceBetween: 20,   // 슬라이드 간의 간격을 설정 (필요 시 수정)
+                loop: false,
+                direction: 'horizontal',         // 슬라이드를 무한 반복
+                navigation: {
+                    nextEl: '.swiper-button-next', // 다음 버튼
+                    prevEl: null, // 이전 버튼
+                },
+                pagination: {
+                    el: '.swiper-pagination', // 페이지네이션
+                    clickable: true            // 페이지네이션 클릭 가능
+                }
+            });
+
+
+            var buttons = document.querySelectorAll('.category .button');
+            var slides = document.querySelectorAll('.new .swiper-slide');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // 모든 버튼에서 active 클래스를 제거
+                    buttons.forEach(btn => btn.classList.remove('active'));
+
+                    // 클릭된 버튼에 active 클래스 추가
+                    button.classList.add('active');
+
+                    // 모든 슬라이드 숨기기
+                    slides.forEach(slide => slide.style.display = 'none');
+
+                    // 클릭된 버튼에 해당하는 카테고리만 보이기
+                    const category = button.getAttribute('data-category');
+                    slides.forEach(slide => {
+                        if (slide.getAttribute('data-category') === category) {
+                            slide.style.display = 'block'; // 해당 카테고리 슬라이드만 보이게
+                        }
+                    });
+
+                    // Swiper 업데이트하여 새롭게 슬라이드를 인식하도록 함
+                    swiperNew.update();
+                });
+            });
+
+            // 기본적으로 첫 번째 버튼에 active 클래스를 추가하고 첫 번째 카테고리만 보이게 설정
+            buttons[0].classList.add('active');
+            const firstCategory = buttons[0].getAttribute('data-category');
+            slides.forEach(slide => {
+                if (slide.getAttribute('data-category') === firstCategory) {
+                    slide.style.display = 'block';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header id="header">
+        <div class="banner">
+            <ul>
+                <li><a href="#">회원가입시 10,000원 할인쿠폰</a></li>
+                <li class="on"><a href="#">Winter season-off❄</a></li>
+            </ul>
+            <button class="close">
+                <img src="" alt="">
+            </button>
+        </div><!-- .banner -->
+
+        <header class="header">
+            <div class="inner">
+                <h1 class="logo">
+                    <a href="#"><img src="img/bbia_logo.png" alt="삐아 로고"></a>
+                </h1>
+                <nav class="pc_nav">
+                    <ul class="gnb">
+                        <li>
+                            <a href="#">SHOP</a>
+                        </li>
+                        <li>
+                            <a href="#">EVENT</a>
+                        </li>
+                        <li>
+                            <a href="#">BENEFIT</a>
+                        </li>
+                        <li>
+                            <a href="#">REVIEW</a>
+                        </li>
+                        <li>
+                            <a href="#">COMMUNITY</a>
+                        </li>
+                        <li>
+                            <a href="#">EDITORIAL</a>
+                        </li>
+                        <li>
+                            <a href="#">BRAND</a>
+                        </li>
+                    </ul><!-- .gnb -->
+                </nav><!-- .pc_nav -->
+
+                <div class="util">
+                    <button class="search">
+                        <img src="img/btn_search.svg" alt="검색">
+                    </button>
+                    <button class="mypage">
+                        <img src="img/btn_mypage.svg" alt="마이페이지">
+                    </button>
+                    <button class="cart">
+                        <img src="img/btn_cart.svg" alt="장바구니">
+                    </button>
+                </div><!-- .util -->
+            </div><!-- .inner -->
+        </header><!-- .header end -->
+    </header><!-- #header end -->
+
+    <section class="main_visual">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="pc_visual" src="img/bbia_main_1.jpg" alt="">
+                    <img class="mobile_visual" src="" alt="">
+                    <div class="text">
+                        <div class="inner">
+                            <strong>New</strong>
+                            <h2>로 틴트</h2>
+                            <p>물처럼 가볍고 끈적함 없이 산뜻한 맑은 틴트</p>
+                        </div>
+                    </div>
+                </div><!-- .swiper-slide -->
+                <div class="swiper-slide">
+                    <img class="pc_visual" src="img/bbia_main_2.jpg" alt="">
+                    <img class="mobile_visual" src="" alt="">
+                    <div class="text">
+                        <div class="inner">
+                            <strong>New</strong>
+                            <h2>초코비 에디션 <br /> 라스트 아이 팔레트</h2>
+                            <p>삐아의 새로운 시그니처 아이팔레트</p>
+                        </div>
+                    </div>
+                </div><!-- .swiper-slide -->
+                <div class="swiper-slide">
+                    <img class="pc_visual" src="img/bbia_main_3.jpg" alt="">
+                    <img class="mobile_visual" src="" alt="">
+                    <div class="text">
+                        <div class="inner">
+                            <strong>New</strong>
+                            <h2>초코비 에디션 <br /> 글로우 틴트</h2>
+                            <p>투명하게 빛나는 입술 위 초코 한방울</p>
+                        </div>
+                    </div>
+                </div><!-- .swiper-slide -->
+                <div class="swiper-slide">
+                    <img class="pc_visual" src="img/bbia_main_4.jpg" alt="">
+                    <img class="mobile_visual" src="" alt="">
+                    <div class="text">
+                        <div class="inner">
+                            <strong>New</strong>
+                            <h2>오너먼트 에디션 <br /> 라스트 아이 팔레트</h2>
+                            <p>섀도우부터 립-치크 제형까지 팔레트 하나로 완성하는 나</p>
+                        </div>
+                    </div>
+                </div><!-- .swiper-slide -->
+                <div class="swiper-slide">
+                    <img class="pc_visual" src="img/bbia_main_5.jpg" alt="">
+                    <img class="mobile_visual" src="" alt="">
+                    <div class="text">
+                        <div class="inner">
+                            <strong>New</strong>
+                            <h2>초코비 에디션 <br /> 라스트 벨벳 틴트</h2>
+                            <p>부드럽고 풍부한 코코아 색감의 벨벳 틴트</p>
+                        </div>
+                    </div>
+                </div><!-- .swiper-slide -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section><!-- .main_visual end -->
+
+    <section class="new">
+        <h2>NEW ARRIVALS</h2>
+        <div class="category">
+            <button class="button" data-category ="base">BASE</button>
+            <button class="button" data-category ="eye">EYE</button>
+            <button class="button" data-category ="lip">LIP</button>
+            <button class="button" data-category ="edition">EDITION</button>
+            <button class="button" data-category ="other">OTHER</button>
+        </div>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-category ="base">
+                    <div class="slide-item">
+                        <img src="img/base-1.png" alt="오 글로우 쿠션">
+                        <p>오 글로우 쿠션</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="base">
+                    <div class="slide-item">
+                        <img src="img/base-2.png" alt="라스트 윤곽 스틱">
+                        <p>라스트 윤곽 스틱</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="base">
+                    <div class="slide-item">
+                        <img src="img/base-3.png" alt="라스트 세범 팩트">
+                        <p>라스트 세범 팩트</p>
+                    </div>
+                </div>
+                <!-- .swiper-slide base -->
+                <div class="swiper-slide" data-category ="eye">
+                    <div class="slide-item">
+                        <img src="img/eye-1.png" alt="라스트 아이 팔레트">
+                        <p>라스트 아이 팔레트</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="eye">
+                    <div class="slide-item">
+                        <img src="img/eye-2.png" alt="네버 다이 마스카라">
+                        <p>네버 다이 마스카라</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="eye">
+                    <div class="slide-item">
+                        <img src="img/eye-3.png" alt="라스트 펜 아이라이너">
+                        <p>라스트 펜 아이라이너</p>
+                    </div>
+                </div>
+                <!-- .swiper-slide eye -->
+                <div class="swiper-slide" data-category ="lip">
+                    <div class="slide-item">
+                        <img src="img/lip-1.png" alt="글로우 틴트">
+                        <p>글로우 틴트</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="lip">
+                    <div class="slide-item">
+                        <img src="img/lip-2.png" alt="라스트 벨벳 틴트">
+                        <p>라스트 벨벳 틴트</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="lip">
+                    <div class="slide-item">
+                        <img src="img/lip-3.png" alt="에디션 벨벳 글로우틴트">
+                        <p>에디션 벨벳 글로우틴트</p>
+                    </div>
+                </div>
+                <!-- .swiper-slide lip -->
+                <div class="swiper-slide" data-category ="edition">
+                    <div class="slide-item">
+                        <img src="img/edition-1.png" alt="우유애교">
+                        <p>우유애교</p>
+                    </div>
+                </div>
+                <!-- .swiper-slide edition -->
+                <div class="swiper-slide" data-category ="other">
+                    <div class="slide-item">
+                        <img src="img/other-1.png" alt="오 쿠션퍼프">
+                        <p>오 쿠션 퍼프</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="other">
+                    <div class="slide-item">
+                        <img src="img/other-2.png" alt="오 퍼펙트 브러쉬">
+                        <p>오 퍼펙트 브러쉬</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-category ="other">
+                    <div class="slide-item">
+                        <img src="img/other-3.png" alt="오 핑거 퍼프">
+                        <p>오 핑거 퍼프</p>
+                    </div>
+                </div>
+                <!-- .swiper-slide other -->
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+    </section>
+
+    <section class="hot_picks">
+        <h2>HOT PICKS</h2>
+        <div class="text">
+            <p>지금 주목해야 할 아이템 놓치지마세요!</p>
+            <span>VIEW MORE</span>
+        </div>
+
+        <div class="hot_wrap">
+            <div class="item left">
+                <img src="img/hot_01.png" alt="">
+            </div>
+            <div class="item center">
+                <img src="img/hot_03.jpg" alt="">
+            </div>
+            <div class="item right">
+                <img src="img/hot_02.png" alt="">
+            </div>
+        </div><!-- .hot_wrap -->
+
+        <div class="hot_emphasis">
+            <p>Last Eye Palette</p>
+        </div><!-- .hot_emphasis -->
+
+        <div class="hot_images">
+            <div class="item">
+                <img src="img/hot_04.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="img/hot_05.jpg" alt="">
+            </div>
+        </div><!-- .hot_images -->
+    </section>
+
+    <section class="brand">
+        <div class="inner">
+            <div class="text">
+                <h2>COLORFUL <br /> LIFESTYLE, <br />
+                    CREATED <br /> BY BBIA</h2>
+                <p>고객의 시선에서 <br /> 다채로운 트렌드를 이끄는</p>
+                <span>BBIA Products</span>
+            </div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <img src="img/Brand_prd_01.jpg" alt="">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <img src="img/Brand_prd_02.jpg" alt="">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <img src="img/Brand_prd_03.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/Brand_prd_04.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/Brand_prd_05.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <section class="sns">
+        <div class="inner">
+            <div class="instagram_1">
+                <div class="item">
+                    <a href="#">
+                        <video autoplay muted loop>
+                            <source src="img/video_1.mp4">
+                        </video>
+                    </a>
+                </div>
+                <div class="text">
+                    <a href="#">
+                        <span class="follow">FOLLOW US</span>
+                        <br />
+                        <span class="instagram">@bbia.official</span>
+                    </a>
+                </div><!--.text -->
+            </div><!-- .instagram_1 -->
+            <div class="instagram_2">
+                <div class="text">
+
+                    <a href="#">
+                        <span class="follow">BBIA Official</span>
+                        <span class="instagram">Instagram</span></a>
+                </div><!-- .text -->
+                <div class="item">
+                    <a href="#">
+                        <video autoplay muted loop>
+                            <source src="img/video_2.mp4">
+                        </video>
+                    </a>
+                </div>
+            </div><!-- .instagram_2 -->
+            <ul class="sns_icon">
+                <li>
+                    <a href="#">
+                        <img src="img/bbia_insta.png" alt="삐아 인스타">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="img/bbia_facebook.png" alt="삐아 페이스북">
+                    </a>
+                </li>
+            </ul>
+        </div><!-- .inner -->
+    </section><!-- .sns end -->
+
+    <section class="footer">
+        <div class="ft_wrap">
+            <div class="l_wrap">
+                <div class="f_inner">
+                    <div class="logo">
+                        <img src="img/f_logo.png" alt="삐아 로고">
+                    </div>
+                    <div class="info">
+                        <p class="name">(주)삐아</p>
+                        <div class="info_box">
+                            <div class="l_box">
+                                <dl>
+                                    <dt>대표이사</dt>
+                                    <dd>박광춘</dd>
+                                </dl>
+                                <dl>
+                                    <dt>주소</dt>
+                                    <dd>인천광역시 연수구 컨벤시아대로 165 (포스코타워-송도) 32층</dd>
+                                </dl>
+                                <dl>
+                                    <dt>사업자등록번호</dt>
+                                    <dd>226-81-32030</dd>
+                                </dl>
+                            </div>
+                            <div class="r_box">
+                                <dl>
+                                    <dt>개인정보책임관리자</dt>
+                                    <dd>오원선</dd>
+                                </dl>
+                                <dl>
+                                    <dt>협찬&제휴 문의</dt>
+                                    <dd>bbia.mkt@bbia.co.kr</dd>
+                                </dl>
+                                <dl>
+                                    <dt>수출 및 무역 상담</dt>
+                                    <dd>trade@bbia.co.kr</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <ul class="link_box">
+                            <li class="link">
+                                <a href="#">이용약관</a>
+                            </li>
+                            <li class="link">
+                                <a href="#">개인정보처리방침</a>
+                            </li>
+                            <li class="link">
+                                <a href="#">회사소개</a>
+                            </li>
+                            <li class="link">
+                                <a href="#">1:1문의</a>
+                            </li>
+                            <li class="link">
+                                <a href="#">FAQ</a>
+                            </li>
+                        </ul>
+                        <p class="copy">©BBIA.ALL RICHTS RESERVED.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="r_wrap">
+                <div class="cs_box">
+                    <p class="tit">고객센터</p>
+                    <a href="#">032-858-7784</a>
+                    <ul class="cs_list">
+                        <li class="cs_cont">
+                            월~금 AM 10:00 ~ PM 05:00
+                            <br />
+                            (점심 PM 12:00 ~ PM 01:00,
+                            <br />
+                            주말 및 공휴일 휴무입니다.)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="f_title">
+            <p class="f_text">
+                Everyone's Beauty
+            </p>
+        </div>
+
+    </section>
+</body>
+
+</html>
