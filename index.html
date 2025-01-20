@@ -111,15 +111,25 @@
 
 <body>
     <header id="header">
-        <div class="banner">
-            <ul>
-                <li><a href="#">회원가입시 10,000원 할인쿠폰</a></li>
-                <li class="on"><a href="#">Winter season-off❄</a></li>
-            </ul>
-            <button class="close">
-                <img src="" alt="">
-            </button>
-        </div><!-- .banner -->
+        <section class="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <p>회원가입시 10,000원 할인쿠폰</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <p>첫 구매 20%할인 & 적립금 3000원</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <p>Winter season-off❄</p>
+                    </div>
+                </div>
+
+                <button class="close">
+                    <img src="img/close.svg" alt="닫기">
+                </button>
+            </div><!-- .swiper-container end -->
+        </section><!-- .banner -->
 
         <header class="header">
             <div class="inner">
@@ -226,9 +236,8 @@
                     </div>
                 </div><!-- .swiper-slide -->
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
+            <div class="swiper-c_button-next"></div>
+            <div class="swiper-c_button-prev"></div>
         </div>
     </section><!-- .main_visual end -->
 
@@ -361,9 +370,11 @@
         <div class="hot_images">
             <div class="item">
                 <img src="img/hot_04.jpg" alt="">
+                <button class="button"></button>
             </div>
             <div class="item">
                 <img src="img/hot_05.jpg" alt="">
+                <button class="button"></button>
             </div>
         </div><!-- .hot_images -->
     </section>
