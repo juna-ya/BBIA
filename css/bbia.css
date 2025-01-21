@@ -70,7 +70,7 @@
     font-family: "Abril Fatface", serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
 
 
@@ -86,26 +86,37 @@ a {
     text-decoration: none;
     color: inherit;
 }
-.banner {
-    background-color: #f27d7d;
+body {
+    font-family: 'Pretendard';
+}
+/* .banner */
+.banner .swiper-container {
     width: 100%;
-    height: 40px;
-
-    position: fixed;
+    height: 35px;
+    background-color:#f27d7d; 
     top: 0;
     left: 0;
+    position: fixed;
     z-index: 100;
-}
-.banner > ul {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    overflow: hidden; /* 영역안에서 슬라이드됨 */
 }
-.banner > ul li {}
-
-
+.banner .swiper-slide p {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+.banner .swiper-container .close {
+    background-color: transparent;
+    border: none;
+    margin-right: 5px;
+}
 /* header */
 .header {
     width: 100%;
@@ -118,7 +129,7 @@ a {
 .header .inner {
     max-width: 1800px;
     width: calc(100% - 60px);
-    height: 100%;
+    height: 60%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -150,8 +161,8 @@ a {
 }
 .header .inner .util button img {
     width: 40px;
+    height: 40px;
 }
-
 
 /* main_visual */
 .swiper .mobile_visual {
@@ -169,15 +180,18 @@ a {
 .swiper-slide {
     position: relative;
 }
-
+.swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .swiper-slide img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
 }
-
-
 .swiper-slide .text {
     position: absolute;
     bottom: 10%;
@@ -186,26 +200,61 @@ a {
     display: block;
 }
 .swiper-slide .text .inner {
-    display: block; /* 기본적으로 block으로 설정하여 텍스트가 세로로 나열되도록 */
+    display: block; 
 }
 .swiper-slide .text .inner strong {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     display: block;
     margin-bottom: 0.5rem;
 }
 
 .swiper-slide .text .inner h2 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
 .swiper-slide .text .inner p {
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.5;
 }
+.main_visual .swiper-button-next, .main_visual .swiper-button-prev {
+    background-image: none;
+    display: none;
+}
+.main_visual .swiper-c_button-next,
+.main_visual .swiper-c_button-prev {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    cursor: pointer;
+   /*  display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 80px;
+    height: 40px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+   /*  transform: translateY(-50%); */
+}
+.main_visual .swiper-c_button-next {
+    background-image: url(../img/next.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 10px; /* 오른쪽 위치 */
+    
+}
+.main_visual .swiper-c_button-prev  {
+    background-image: url(../img/prev.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 10px; /* 왼쪽 위치 */
 
+}
 
 /* .new */
   .new {
@@ -250,8 +299,6 @@ a {
     z-index: -1;
   }
   .new .swiper-container {
-    /* width: 100%;
-    height: 100%; */
     position: relative;
     max-width: 800px;
     margin: 0 auto;
@@ -266,7 +313,6 @@ a {
     width: 100%;
     overflow: hidden;
   }
-  
   .new .slide-item img {
     width: 100%;
     height: 100%;
@@ -300,6 +346,7 @@ a {
     left: -80px;
     background: url(../img/이전.svg) no-repeat;
 }
+
 /* .hot_picks */
 .hot_picks {
     text-align: center;
@@ -378,6 +425,7 @@ a {
     display: flex;
     /* justify-content: space-between; */
     gap: 20px;
+    position: relative;
 }
 .hot_images .item {
     width: 48%;
@@ -399,7 +447,7 @@ a {
     right: 0;
     transform: translate(-50%, -50%);
     background: url(../img/더보기.svg);
-    background-size: contain;
+    background-size: contain; /* 버튼 이미지 왜곡 방지 */
 }
 
 
@@ -409,8 +457,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: cover; /* 배경 이미지가 요소 크기에 맞게 커짐 */
-    height: 80vh; /* 예시: 화면의 80% 높이를 차지하게 설정 */
+    background-size: cover;
+    height: 80vh;
     position: relative;
   }
   .brand::before {
@@ -420,22 +468,21 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* 반투명 검은색 오버레이 */
-    z-index: 1; /* 이미지 위에 오버레이가 표시되도록 설정 */
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
   .brand .inner {
     display: flex;
     max-width: 100%;
     width: 100%;
-    justify-content: flex-start; /* 왼쪽으로 배치 */
+    justify-content: flex-start;
     align-items: center;
     margin: 0;
   }
   
-  /* 텍스트 영역 스타일 */
+
   .brand .text {
-    flex: 1; 
-    /* max-width: 500px; */
+    flex: 1;
     margin-left: 100px; 
     text-align: left;
     z-index: 3;
@@ -462,14 +509,13 @@ a {
     color: #fff;
   }
   
-  /* Swiper 슬라이더 영역 스타일 */
+ 
   .brand .swiper-container {
-    flex: 2; /* 슬라이더 영역이 텍스트보다 더 큰 비율 */
-    /* max-width: 700px; */
+    flex: 2;
     width: 100%;
     height: 600px;
     overflow: hidden;
-    margin-right: 0; /* 오른쪽 여백 제거 */
+    margin-right: 0;
     padding-right: 0;
   }
   .brand .swiper-wrapper {
@@ -478,14 +524,14 @@ a {
 }
 
   .brand .swiper-slide {
-    width: 100%; /* 각 슬라이드가 화면의 절반을 차지하도록 설정 */
+    width: 100%;
     flex: 0 0 auto;
   }
   
   .brand .swiper-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 이미지 최대 크기 제한 */
+    object-fit: cover;
   }
 
 
@@ -519,7 +565,6 @@ a {
     color: #939393;
     font-family: 'Pretendard-Regular';
     font-size: 20px;
-
 }
 .sns .instagram{
     color: #000;
@@ -532,95 +577,6 @@ a {
 .instagram_2 {
     margin-top: 80px;
 }
-/* .inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: row; 
-    gap: 80px; 
-}
-.instagram_1 {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-end; 
-    justify-content: flex-start; 
-    position: relative;
-}
-
-.instagram_1 .item {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px; 
-}
-
-.instagram_1 .text {
-    margin-top: auto; 
-    text-align: right;
-    color:#333 ;
-}
-.instagram_1, .instagram_2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.instagram_1 .item, .instagram_2 .item {
-    margin-bottom: 20px;
-}
-.instagram_1 .item video {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-.instagram_1 video, .instagram_2 video {
-    max-width: 50%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-.instagram_2 {
-    position: relative;
-    top: 200px; 
-    transform: none;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.instagram_2 .text {
-    position: static;
-    text-align: left;
-    margin-bottom: 10px;
-    width: 100%;
-    color: #333;
-}
-.instagram_2 .item video {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-.sns_icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    gap: 5px;
-}
-
-.sns_icon li {
-    list-style: none;
-}
-
-.sns_icon img {
-    width: 40px;
-    height: 40px;
-} */
-
 
 /* .footer */
 .footer {
@@ -720,7 +676,7 @@ dd {
     display: flex;
     flex-direction: column;
 }
-.cs_box .tit , .cs_box .tit a{
+.cs_box .tit , a{
     color: #fff;
     font-size: 13px;
     font-family: 'Pretendard-Regular';
@@ -740,4 +696,44 @@ dd {
     font-size: 210px;
     font-family: "Amethysta", serif;
     text-align: center;
+}
+.main_button {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    background: none;
+}
+
+.main_button img {
+    width: 60px;
+    height: auto;
+}
+.sub_buttons {
+    display: none;
+    position: fixed;
+    bottom: 100px; 
+    right: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 999;
+}
+
+.sub_buttons.show {
+    /* display: block; */  /* 'show' 클래스가 추가되면 버튼들이 보이도록 설정 */
+}
+
+.sub_buttons button {
+    margin: 10px 0;
+    padding: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.sub_button img {
+    width: 50px;
+    height: auto; 
 }
