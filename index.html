@@ -5,133 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBIA 리뉴얼</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Asul:wght@400;700&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="css/bbia.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-
     <script src="lib/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var mainVisualSwiper = new Swiper(".main_visual .mySwiper", {
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                    type: "bullets",
-                },
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-            });
-
-            var bannerSwiper = new Swiper('.banner .swiper-container', {
-                direction: 'vertical',
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-
-            var newSwiper = new Swiper('.new .swiper-container', {
-                slidesPerView: 3,
-                spaceBetween: 30,
-                loop: true,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-            });
-
-            var brandSwiper = new Swiper('.brand .swiper-container', {
-                slidesPerView: 2.5,
-                spaceBetween: 20,
-                loop: false,
-                direction: 'horizontal',
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: null,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                }
-            });
-
-            var buttons = document.querySelectorAll('.category .button');
-            var slides = document.querySelectorAll('.new .swiper-slide');
-
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-
-                    buttons.forEach(btn => btn.classList.remove('active'));
-
-
-                    button.classList.add('active');
-
-
-                    slides.forEach(slide => slide.style.display = 'none');
-
-
-                    const category = button.getAttribute('data-category');
-                    slides.forEach(slide => {
-                        if (slide.getAttribute('data-category') === category) {
-                            slide.style.display = 'block';
-                        }
-                    });
-
-
-                    newSwiper.update();
-                });
-            });
-
-            buttons[0].classList.add('active');
-            const firstCategory = buttons[0].getAttribute('data-category');
-            slides.forEach(slide => {
-                if (slide.getAttribute('data-category') === firstCategory) {
-                    slide.style.display = 'block';
-                } else {
-                    slide.style.display = 'none';
-                }
-            });
-            const closeButton = document.querySelector('.banner .close');
-            const banner = document.querySelector('.banner');
-
-            // 닫기 버튼 클릭 시 배너 숨기기
-            closeButton.addEventListener('click', () => {
-                banner.style.display = 'none';
-            });
-
-            var topButton = document.querySelector('.top_button');
-            var subButtons = document.querySelector('.sub_buttons');
-
-            topButton.addEventListener('click', function () {
-                subButtons.classList.toggle('show'); // 'show' 클래스를 토글하여 sub_buttons 표시 여부 변경
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -154,8 +36,8 @@
                 <button class="close">
                     <img src="img/close.svg" alt="닫기">
                 </button>
-            </div><!-- .swiper-container end -->
-        </section><!-- .banner -->
+            </div>
+        </section>
 
         <header class="header">
             <div class="inner">
@@ -166,18 +48,38 @@
                     <ul class="gnb">
                         <li>
                             <a href="#">SHOP</a>
+                            <ul class="depth02">
+                                <li><a href="#">ALL</a></li>
+                                <li><a href="#">BASE</a></li>
+                                <li><a href="#">EYE</a></li>
+                                <li><a href="#">LIP</a></li>
+                                <li><a href="#">NAIL</a></li>
+                                <li><a href="#">EDITION</a></li>
+                                <li><a href="#">OTHER</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">EVENT</a>
                         </li>
                         <li>
                             <a href="#">BENEFIT</a>
+                            <ul class="depth02">
+                                <li><a href="#">쿠폰</a></li>
+                                <li><a href="#">멤버십</a></li>
+                                <li><a href="#">사은품</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">REVIEW</a>
                         </li>
                         <li>
                             <a href="#">COMMUNITY</a>
+                            <ul class="depth02">
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">1:1문의</a></li>
+                                <li><a href="#">MEDIA</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">EDITORIAL</a>
@@ -185,8 +87,8 @@
                         <li>
                             <a href="#">BRAND</a>
                         </li>
-                    </ul><!-- .gnb -->
-                </nav><!-- .pc_nav -->
+                    </ul>
+                </nav>
 
                 <div class="util">
                     <button class="search">
@@ -198,10 +100,10 @@
                     <button class="cart">
                         <img src="img/btn_cart.svg" alt="장바구니">
                     </button>
-                </div><!-- .util -->
-            </div><!-- .inner -->
-        </header><!-- .header end -->
-    </header><!-- #header end -->
+                </div>
+            </div>
+        </header>
+    </header>
 
     <section class="main_visual">
         <div class="swiper mySwiper">
@@ -216,7 +118,7 @@
                             <p>물처럼 가볍고 끈적함 없이 산뜻한 맑은 틴트</p>
                         </div>
                     </div>
-                </div><!-- .swiper-slide -->
+                </div>
                 <div class="swiper-slide">
                     <img class="pc_visual" src="img/bbia_main_2.jpg" alt="">
                     <img class="mobile_visual" src="" alt="">
@@ -227,7 +129,7 @@
                             <p>삐아의 새로운 시그니처 아이팔레트</p>
                         </div>
                     </div>
-                </div><!-- .swiper-slide -->
+                </div>
                 <div class="swiper-slide">
                     <img class="pc_visual" src="img/bbia_main_3.jpg" alt="">
                     <img class="mobile_visual" src="" alt="">
@@ -238,7 +140,7 @@
                             <p>투명하게 빛나는 입술 위 초코 한방울</p>
                         </div>
                     </div>
-                </div><!-- .swiper-slide -->
+                </div>
                 <div class="swiper-slide">
                     <img class="pc_visual" src="img/bbia_main_4.jpg" alt="">
                     <img class="mobile_visual" src="" alt="">
@@ -249,7 +151,7 @@
                             <p>섀도우부터 립-치크 제형까지 팔레트 하나로 완성하는 나</p>
                         </div>
                     </div>
-                </div><!-- .swiper-slide -->
+                </div>
                 <div class="swiper-slide">
                     <img class="pc_visual" src="img/bbia_main_5.jpg" alt="">
                     <img class="mobile_visual" src="" alt="">
@@ -260,13 +162,12 @@
                             <p>부드럽고 풍부한 코코아 색감의 벨벳 틴트</p>
                         </div>
                     </div>
-                </div><!-- .swiper-slide -->
+                </div>
             </div>
             <div class="swiper-c_button-next"></div>
             <div class="swiper-c_button-prev"></div>
-            <!-- <div class="swiper-pagination"></div> -->
         </div>
-    </section><!-- .main_visual end -->
+    </section>
 
     <section class="new">
         <h2>NEW ARRIVALS</h2>
@@ -298,7 +199,7 @@
                         <p>라스트 세범 팩트</p>
                     </div>
                 </div>
-                <!-- .swiper-slide base -->
+
                 <div class="swiper-slide" data-category="eye">
                     <div class="slide-item">
                         <img src="img/eye-1.png" alt="라스트 아이 팔레트">
@@ -317,7 +218,7 @@
                         <p>라스트 펜 아이라이너</p>
                     </div>
                 </div>
-                <!-- .swiper-slide eye -->
+
                 <div class="swiper-slide" data-category="lip">
                     <div class="slide-item">
                         <img src="img/lip-1.png" alt="글로우 틴트">
@@ -336,14 +237,14 @@
                         <p>에디션 벨벳 글로우틴트</p>
                     </div>
                 </div>
-                <!-- .swiper-slide lip -->
+
                 <div class="swiper-slide" data-category="edition">
                     <div class="slide-item">
                         <img src="img/edition-1.png" alt="우유애교">
                         <p>우유애교</p>
                     </div>
                 </div>
-                <!-- .swiper-slide edition -->
+
                 <div class="swiper-slide" data-category="other">
                     <div class="slide-item">
                         <img src="img/other-1.png" alt="오 쿠션퍼프">
@@ -362,7 +263,7 @@
                         <p>오 핑거 퍼프</p>
                     </div>
                 </div>
-                <!-- .swiper-slide other -->
+
             </div>
 
             <div class="swiper-button-next"></div>
@@ -388,11 +289,11 @@
             <div class="item right">
                 <img src="img/hot_02.png" alt="">
             </div>
-        </div><!-- .hot_wrap -->
+        </div>
 
         <div class="hot_emphasis">
             <p>Last Eye Palette</p>
-        </div><!-- .hot_emphasis -->
+        </div>
 
         <div class="hot_images">
             <div class="item">
@@ -403,7 +304,7 @@
                 <img src="img/hot_05.jpg" alt="">
                 <button class="button"></button>
             </div>
-        </div><!-- .hot_images -->
+        </div>
     </section>
 
     <section class="brand">
@@ -416,15 +317,12 @@
             </div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
                     <div class="swiper-slide">
                         <img src="img/Brand_prd_01.jpg" alt="">
                     </div>
-                    <!-- Slide 2 -->
                     <div class="swiper-slide">
                         <img src="img/Brand_prd_02.jpg" alt="">
                     </div>
-                    <!-- Slide 3 -->
                     <div class="swiper-slide">
                         <img src="img/Brand_prd_03.jpg" alt="">
                     </div>
@@ -460,15 +358,15 @@
                         <br />
                         <span class="instagram">@bbia.official</span>
                     </a>
-                </div><!--.text -->
-            </div><!-- .instagram_1 -->
+                </div>
+            </div>
             <div class="instagram_2">
                 <div class="text">
 
                     <a href="#">
                         <span class="follow">BBIA Official</span>
                         <span class="instagram">Instagram</span></a>
-                </div><!-- .text -->
+                </div>
                 <div class="item">
                     <a href="#">
                         <video autoplay muted loop>
@@ -476,7 +374,7 @@
                         </video>
                     </a>
                 </div>
-            </div><!-- .instagram_2 -->
+            </div>
             <ul class="sns_icon">
                 <li>
                     <a href="#">
@@ -489,8 +387,8 @@
                     </a>
                 </li>
             </ul>
-        </div><!-- .inner -->
-    </section><!-- .sns end -->
+        </div>
+    </section>
 
     <section class="footer">
         <div class="ft_wrap">
@@ -584,10 +482,140 @@
     </button>
 
     <div class="sub_buttons">
-        <buttton class="sub_button"><img src="" alt=""></buttton>
-        <buttton class="sub_button"><img src="" alt=""></buttton>
-        <buttton class="sub_button"><img src="" alt=""></buttton>
+        <buttton class="sub_button"><img src="img/top.png" alt="탑 버튼"></buttton>
+        <buttton class="sub_button"><img src="img/kakao_talk.png" alt="카카오톡 버튼"></buttton>
     </div>
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var mainVisualSwiper = new Swiper(".main_visual .mySwiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                type: "bullets",
+            },
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+
+        var bannerSwiper = new Swiper('.banner .swiper-container', {
+            direction: 'vertical',
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        var newSwiper = new Swiper('.new .swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+
+        var brandSwiper = new Swiper('.brand .swiper-container', {
+            slidesPerView: 2.5,
+            spaceBetween: 20,
+            loop: false,
+            direction: 'horizontal',
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: null,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            }
+        });
+
+        var buttons = document.querySelectorAll('.category .button');
+        var slides = document.querySelectorAll('.new .swiper-slide');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                buttons.forEach(btn => btn.classList.remove('active'));
+
+
+                button.classList.add('active');
+
+
+                slides.forEach(slide => slide.style.display = 'none');
+
+
+                const category = button.getAttribute('data-category');
+                slides.forEach(slide => {
+                    if (slide.getAttribute('data-category') === category) {
+                        slide.style.display = 'block';
+                    }
+                });
+
+
+                newSwiper.update();
+            });
+        });
+
+        buttons[0].classList.add('active');
+        const firstCategory = buttons[0].getAttribute('data-category');
+        slides.forEach(slide => {
+            if (slide.getAttribute('data-category') === firstCategory) {
+                slide.style.display = 'block';
+            } else {
+                slide.style.display = 'none';
+            }
+        });
+        const closeButton = document.querySelector('.banner .close');
+        const banner = document.querySelector('.banner');
+
+
+        closeButton.addEventListener('click', () => {
+            banner.style.display = 'none';
+        });
+
+        var topButton = document.querySelector('.main_button');
+        var subButtons = document.querySelector('.sub_buttons');
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 300) {
+                topButton.style.opacity = '1';
+                topButton.style.transform = 'translateY(0)';
+            } else {
+                topButton.style.opacity = '0';
+                topButton.style.transform = 'translateY(20px)';
+            }
+        });
+
+        topButton.addEventListener('click', function () {
+            subButtons.classList.toggle('show');
+            if (subButtons.classList.contains('show')) {
+                subButtons.style.visibility = 'visible';
+                subButtons.style.opacity = '1';
+            } else {
+                subButtons.style.visibility = 'hidden';
+                subButtons.style.opacity = '0';
+            }
+        });
+    });
+</script>
 
 </html>
