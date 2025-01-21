@@ -21,7 +21,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var swiper = new Swiper(".main_visual .mySwiper", {
+            var mainVisualSwiper = new Swiper(".main_visual .mySwiper", {
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
@@ -29,7 +29,7 @@
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
-                    tiye : "fraction",
+                    type: "bullets",
                 },
                 loop: true,
                 autoplay: {
@@ -38,64 +38,75 @@
                 },
             });
 
-            var swiper = new Swiper('.new .swiper-container', {
-                slidesPerView: 3, // 한 화면에 3개의 슬라이드를 표시
-                spaceBetween: 30, // 슬라이드 간의 간격 설정
-                loop: true, // 슬라이드를 무한 반복
+            var bannerSwiper = new Swiper('.banner .swiper-container', {
+                direction: 'vertical',
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+
+            var newSwiper = new Swiper('.new .swiper-container', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
                 autoplay: {
-                    delay: 3000, // 3초마다 자동으로 슬라이드 변경
-                    disableOnInteraction: false, // 사용자 인터랙션 후에도 자동 재생 유지
+                    delay: 3000,
+                    disableOnInteraction: false,
                 },
             });
 
-            var swiper = new Swiper('.brand .swiper-container', {
-                slidesPerView: 2.5,  // 한 번에 2개의 슬라이드가 보이도록 설정
-                spaceBetween: 20,   // 슬라이드 간의 간격을 설정 (필요 시 수정)
+            var brandSwiper = new Swiper('.brand .swiper-container', {
+                slidesPerView: 2.5,
+                spaceBetween: 20,
                 loop: false,
-                direction: 'horizontal',         // 슬라이드를 무한 반복
+                direction: 'horizontal',
                 navigation: {
-                    nextEl: '.swiper-button-next', // 다음 버튼
-                    prevEl: null, // 이전 버튼
+                    nextEl: '.swiper-button-next',
+                    prevEl: null,
                 },
                 pagination: {
-                    el: '.swiper-pagination', // 페이지네이션
-                    clickable: true            // 페이지네이션 클릭 가능
+                    el: '.swiper-pagination',
+                    clickable: true
                 }
             });
-
 
             var buttons = document.querySelectorAll('.category .button');
             var slides = document.querySelectorAll('.new .swiper-slide');
 
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // 모든 버튼에서 active 클래스를 제거
+
                     buttons.forEach(btn => btn.classList.remove('active'));
 
-                    // 클릭된 버튼에 active 클래스 추가
+
                     button.classList.add('active');
 
-                    // 모든 슬라이드 숨기기
+
                     slides.forEach(slide => slide.style.display = 'none');
 
-                    // 클릭된 버튼에 해당하는 카테고리만 보이기
+
                     const category = button.getAttribute('data-category');
                     slides.forEach(slide => {
                         if (slide.getAttribute('data-category') === category) {
-                            slide.style.display = 'block'; // 해당 카테고리 슬라이드만 보이게
+                            slide.style.display = 'block';
                         }
                     });
 
-                    // Swiper 업데이트하여 새롭게 슬라이드를 인식하도록 함
-                    swiperNew.update();
+
+                    newSwiper.update();
                 });
             });
 
-            // 기본적으로 첫 번째 버튼에 active 클래스를 추가하고 첫 번째 카테고리만 보이게 설정
             buttons[0].classList.add('active');
             const firstCategory = buttons[0].getAttribute('data-category');
             slides.forEach(slide => {
@@ -105,12 +116,27 @@
                     slide.style.display = 'none';
                 }
             });
+            const closeButton = document.querySelector('.banner .close');
+            const banner = document.querySelector('.banner');
+
+            // 닫기 버튼 클릭 시 배너 숨기기
+            closeButton.addEventListener('click', () => {
+                banner.style.display = 'none';
+            });
+
+            var topButton = document.querySelector('.top_button');
+            var subButtons = document.querySelector('.sub_buttons');
+
+            topButton.addEventListener('click', function () {
+                subButtons.classList.toggle('show'); // 'show' 클래스를 토글하여 sub_buttons 표시 여부 변경
+            });
         });
     </script>
 </head>
 
 <body>
     <header id="header">
+
         <section class="banner">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -238,98 +264,99 @@
             </div>
             <div class="swiper-c_button-next"></div>
             <div class="swiper-c_button-prev"></div>
+            <!-- <div class="swiper-pagination"></div> -->
         </div>
     </section><!-- .main_visual end -->
 
     <section class="new">
         <h2>NEW ARRIVALS</h2>
         <div class="category">
-            <button class="button" data-category ="base">BASE</button>
-            <button class="button" data-category ="eye">EYE</button>
-            <button class="button" data-category ="lip">LIP</button>
-            <button class="button" data-category ="edition">EDITION</button>
-            <button class="button" data-category ="other">OTHER</button>
+            <button class="button" data-category="base">BASE</button>
+            <button class="button" data-category="eye">EYE</button>
+            <button class="button" data-category="lip">LIP</button>
+            <button class="button" data-category="edition">EDITION</button>
+            <button class="button" data-category="other">OTHER</button>
         </div>
 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-category ="base">
+                <div class="swiper-slide" data-category="base">
                     <div class="slide-item">
                         <img src="img/base-1.png" alt="오 글로우 쿠션">
                         <p>오 글로우 쿠션</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="base">
+                <div class="swiper-slide" data-category="base">
                     <div class="slide-item">
                         <img src="img/base-2.png" alt="라스트 윤곽 스틱">
                         <p>라스트 윤곽 스틱</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="base">
+                <div class="swiper-slide" data-category="base">
                     <div class="slide-item">
                         <img src="img/base-3.png" alt="라스트 세범 팩트">
                         <p>라스트 세범 팩트</p>
                     </div>
                 </div>
                 <!-- .swiper-slide base -->
-                <div class="swiper-slide" data-category ="eye">
+                <div class="swiper-slide" data-category="eye">
                     <div class="slide-item">
                         <img src="img/eye-1.png" alt="라스트 아이 팔레트">
                         <p>라스트 아이 팔레트</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="eye">
+                <div class="swiper-slide" data-category="eye">
                     <div class="slide-item">
                         <img src="img/eye-2.png" alt="네버 다이 마스카라">
                         <p>네버 다이 마스카라</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="eye">
+                <div class="swiper-slide" data-category="eye">
                     <div class="slide-item">
                         <img src="img/eye-3.png" alt="라스트 펜 아이라이너">
                         <p>라스트 펜 아이라이너</p>
                     </div>
                 </div>
                 <!-- .swiper-slide eye -->
-                <div class="swiper-slide" data-category ="lip">
+                <div class="swiper-slide" data-category="lip">
                     <div class="slide-item">
                         <img src="img/lip-1.png" alt="글로우 틴트">
                         <p>글로우 틴트</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="lip">
+                <div class="swiper-slide" data-category="lip">
                     <div class="slide-item">
                         <img src="img/lip-2.png" alt="라스트 벨벳 틴트">
                         <p>라스트 벨벳 틴트</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="lip">
+                <div class="swiper-slide" data-category="lip">
                     <div class="slide-item">
                         <img src="img/lip-3.png" alt="에디션 벨벳 글로우틴트">
                         <p>에디션 벨벳 글로우틴트</p>
                     </div>
                 </div>
                 <!-- .swiper-slide lip -->
-                <div class="swiper-slide" data-category ="edition">
+                <div class="swiper-slide" data-category="edition">
                     <div class="slide-item">
                         <img src="img/edition-1.png" alt="우유애교">
                         <p>우유애교</p>
                     </div>
                 </div>
                 <!-- .swiper-slide edition -->
-                <div class="swiper-slide" data-category ="other">
+                <div class="swiper-slide" data-category="other">
                     <div class="slide-item">
                         <img src="img/other-1.png" alt="오 쿠션퍼프">
                         <p>오 쿠션 퍼프</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="other">
+                <div class="swiper-slide" data-category="other">
                     <div class="slide-item">
                         <img src="img/other-2.png" alt="오 퍼펙트 브러쉬">
                         <p>오 퍼펙트 브러쉬</p>
                     </div>
                 </div>
-                <div class="swiper-slide" data-category ="other">
+                <div class="swiper-slide" data-category="other">
                     <div class="slide-item">
                         <img src="img/other-3.png" alt="오 핑거 퍼프">
                         <p>오 핑거 퍼프</p>
@@ -406,6 +433,9 @@
                     </div>
                     <div class="swiper-slide">
                         <img src="img/Brand_prd_05.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/Brand_prd_06.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -548,6 +578,16 @@
         </div>
 
     </section>
+
+    <button class="main_button">
+        <img src="img/B버튼.svg" alt="탑버튼">
+    </button>
+
+    <div class="sub_buttons">
+        <buttton class="sub_button"><img src="" alt=""></buttton>
+        <buttton class="sub_button"><img src="" alt=""></buttton>
+        <buttton class="sub_button"><img src="" alt=""></buttton>
+    </div>
 </body>
 
 </html>
