@@ -478,12 +478,12 @@
     </section>
 
     <button class="main_button">
-        <img src="img/B버튼.svg" alt="탑버튼">
+        <img src="img/b_btn.svg" alt="">
     </button>
 
     <div class="sub_buttons">
-        <buttton class="sub_button"><img src="img/top.png" alt="탑 버튼"></buttton>
-        <buttton class="sub_button"><img src="img/kakao_talk.png" alt="카카오톡 버튼"></buttton>
+        <button class="sub_button"><img src="img/top.png" alt=""></button>
+        <button class="sub_button"><img src="img/kakao_talk.png" alt=""></button>
     </div>
 </body>
 
@@ -615,6 +615,17 @@
                 subButtons.style.opacity = '0';
             }
         });
+        var scrollTopBtn = document.querySelector('.sub_button');
+
+        if (scrollTopBtn) {
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+
+                subButtons.style.opacity = '0';
+                subButtons.style.visibility = 'hidden';
+                subButtons.style.transform = 'translateY(20px)';
+            });
+        }
     });
 </script>
 
