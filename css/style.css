@@ -388,11 +388,18 @@ body {
     padding-bottom: 60px;
 }
 .hot_picks .text span {
+    font-size: 16px;
     border: 1px solid #333;
     color: #fff;
     padding: 15px 15px;
     border-radius: 10px;
     background-color: #333;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+.hot_picks .text span:hover {
+    transform: scale(1.1);
 }
 .hot_picks .hot_wrap {
     margin-top: 190px;
