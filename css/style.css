@@ -694,7 +694,7 @@ dd {
     display: flex;
     flex-direction: column;
 }
-.cs_box .tit , .link_box a{
+.cs_box .tit , .cs_box a , .link_box a{
     color: #fff;
     font-size: 13px;
     font-family: 'Pretendard-Regular';
